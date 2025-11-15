@@ -1,0 +1,328 @@
+/* ===========================
+   IMPORTAÇÕES E VARIÁVEIS
+   =========================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Kufam:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap');
+
+:root {
+    /* Cores Principais */
+    --color-primary: #269E6D;
+    --color-dark-bg: rgba(38, 38, 38, 0.80);
+    --color-input-bg: #262626;
+    --color-border: #414141;
+    --color-text-primary: #FFFFFF;
+    --color-text-secondary: #BAACAC;
+    --color-accent: rgba(115, 115, 115, 0.50);
+    
+    /* Fontes */
+    --font-heading: 'Kufam', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    
+    /* Espaçamentos */
+    --spacing-xs: 6px;
+    --spacing-sm: 12px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+    --spacing-xl: 32px;
+    --spacing-2xl: 48px;
+    
+    /* Transições */
+    --transition: all 0.3s ease-in-out;
+}
+
+/* ===========================
+   ESTILOS GLOBAIS
+   =========================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    font-family: var(--font-body);
+    background-color: #1a1a1a;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+/* ===========================
+   CONTAINER DE AUTENTICAÇÃO
+   =========================== */
+
+.auth-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-md);
+}
+
+.auth-card {
+    width: 100%;
+    max-width: 450px;
+    padding: var(--spacing-xl) var(--spacing-lg);
+    background: var(--color-dark-bg);
+    border-radius: 12px;
+    border: 1px solid var(--color-accent);
+    backdrop-filter: blur(10px);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-2xl);
+}
+
+/* ===========================
+   SEÇÃO DO LOGO
+   =========================== */
+
+.logo-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+}
+
+.logo {
+    width: 34px;
+    height: 42px;
+    object-fit: contain;
+}
+
+.form-title {
+    color: var(--color-text-primary);
+    font-family: var(--font-heading);
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 32px;
+    margin: 0;
+}
+
+/* ===========================
+   FORMULÁRIO
+   =========================== */
+
+.form-section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+}
+
+.form-label {
+    color: var(--color-text-primary);
+    font-family: var(--font-heading);
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+    display: block;
+}
+
+.form-input {
+    width: 100%;
+    padding: var(--spacing-sm) var(--spacing-md);
+    background-color: var(--color-input-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 3px;
+    color: var(--color-text-secondary);
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 24px;
+    outline: none;
+    transition: var(--transition);
+    backdrop-filter: blur(5px);
+}
+
+.form-input::placeholder {
+    color: #999;
+}
+
+.form-input:focus {
+    border-color: var(--color-primary);
+    background-color: #2a2a2a;
+    color: var(--color-text-primary);
+}
+
+.form-input:hover {
+    border-color: var(--color-primary);
+}
+
+.form-input.input-erro {
+    border-color: #e74c3c;
+    background-color: rgba(231, 76, 60, 0.1);
+}
+
+.error-message {
+    color: #e74c3c;
+    font-family: var(--font-body);
+    font-size: 12px;
+    margin-top: 4px;
+    display: block;
+}
+
+/* Indicador de força de senha */
+.password-strength {
+    height: 3px;
+    background-color: #414141;
+    border-radius: 2px;
+    margin-top: 6px;
+    overflow: hidden;
+}
+
+.password-strength.weak {
+    background-color: #e74c3c;
+}
+
+.password-strength.medium {
+    background-color: #f39c12;
+}
+
+.password-strength.strong {
+    background-color: var(--color-primary);
+}
+
+/* ===========================
+   CHECKBOX
+   =========================== */
+
+.checkbox-wrapper {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin-top: var(--spacing-sm);
+}
+
+.checkbox-input {
+    width: 16px;
+    height: 15px;
+    cursor: pointer;
+    accent-color: var(--color-primary);
+}
+
+.checkbox-label {
+    color: var(--color-text-primary);
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 24px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.checkbox-input:hover + .checkbox-label {
+    color: var(--color-primary);
+}
+
+.link-inline {
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: var(--transition);
+    font-weight: 500;
+}
+
+.link-inline:hover {
+    text-decoration: underline;
+    color: #20805c;
+}
+
+/* Footer do formulário */
+.form-footer {
+    text-align: center;
+    padding-top: var(--spacing-md);
+    border-top: 1px solid var(--color-accent);
+}
+
+.form-footer p {
+    color: var(--color-text-secondary);
+    font-family: var(--font-body);
+    font-size: 14px;
+    margin: 0;
+}
+
+/* ===========================
+   BOTÃO PRIMÁRIO
+   =========================== */
+
+.btn-primary {
+    width: 100%;
+    padding: var(--spacing-sm) var(--spacing-md);
+    background-color: var(--color-primary);
+    color: var(--color-text-primary);
+    border: none;
+    border-radius: 6px;
+    font-family: var(--font-heading);
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 24px;
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: 0px 2px 0px rgba(255, 255, 255, 0.40) inset;
+    text-transform: capitalize;
+}
+
+.btn-primary:hover {
+    background-color: #20805c;
+    transform: translateY(-2px);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+.btn-primary:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+
+
+/* ===========================
+   RESPONSIVIDADE
+   =========================== */
+
+@media (max-width: 480px) {
+    .auth-card {
+        padding: var(--spacing-lg);
+        gap: var(--spacing-lg);
+    }
+
+    .form-input {
+        font-size: 16px; /* Evita zoom em inputs no mobile */
+    }
+
+    .btn-primary {
+        font-size: 18px;
+    }
+}
+
+/* Toast / mensagem temporária */
+.toast {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    background: rgba(0,0,0,0.85);
+    color: #fff;
+    padding: 12px 16px;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    z-index: 9999;
+    font-family: var(--font-body);
+}
+.toast.error { background: #c0392b; }
+.toast.success { background: #27ae60; }

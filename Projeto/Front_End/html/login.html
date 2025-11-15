@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Sistema</title>
+    <link rel="stylesheet" href="../css/login.css">
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-card">
+            <!-- Logo -->
+            <div class="logo-section">
+                <img src="https://placehold.co/34x42" alt="Logo" class="logo">
+                <h1 class="form-title">Bem-vindo de Volta</h1>
+            </div>
+
+            <!-- Formulário de Login -->
+            <form class="form-section" id="loginForm">
+                <!-- Campo E-mail -->
+                <div class="form-group">
+                    <label for="email" class="form-label">E-mail</label>
+                    <input 
+                        type="email" 
+                        id="email" 
+                        class="form-input" 
+                        placeholder="seu.email@exemplo.com" 
+                        required
+                    >
+                </div>
+
+                <!-- Campo Senha -->
+                <div class="form-group">
+                    <label for="senha" class="form-label">Senha</label>
+                    <input 
+                        type="password" 
+                        id="senha" 
+                        class="form-input" 
+                        placeholder="Digite sua senha" 
+                        required
+                    >
+                </div>
+
+                <!-- Lembrar Senha e Esqueceu Senha -->
+                <div class="form-actions">
+                    <div class="checkbox-wrapper">
+                        <input 
+                            type="checkbox" 
+                            id="lembrarSenha" 
+                            class="checkbox-input"
+                        >
+                        <label for="lembrarSenha" class="checkbox-label">Lembrar minha senha</label>
+                    </div>
+                    <a href="#" class="link-forgot-password">Esqueceu a senha?</a>
+                </div>
+
+                <!-- Botão Entrar -->
+                <button type="submit" class="btn-primary">Entrar na Conta</button>
+            </form>
+
+            <!-- Link para Cadastro -->
+            <div class="form-footer">
+                <p>Não tem uma conta? <a href="./cadastro.html" class="link-inline">Cadastre-se agora</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/login.js"></script>
+</body>
+</html>
