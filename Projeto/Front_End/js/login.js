@@ -1,3 +1,4 @@
+
 /**
  * Sistema de Autenticação - Formulário de Login
  * Validação e manipulação de formulário
@@ -128,7 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 localStorage.removeItem('email_salvo');
             }
             if (data.token) localStorage.setItem('auth_token', data.token);
-            window.location.href = './principal.html';
+            window.location.href = './dashboard.html';
         })
         .catch((err) => {
             console.error('Login error:', err);

@@ -1,8 +1,3 @@
-/**
- * Sistema de Autenticação - Formulário de Cadastro
- * Validação e manipulação de formulário
- */
-
 document.addEventListener('DOMContentLoaded', () => {
     const formulario = document.getElementById('cadastroForm');
     const inputNome = document.getElementById('nome');
@@ -12,28 +7,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const checkboxTermos = document.getElementById('termos');
     const passwordStrength = document.getElementById('passwordStrength');
 
-    /**
-     * Valida formato de nome (mínimo 3 caracteres)
-     * @param {string} nome - Nome a validar
-     * @returns {boolean} - True se válido
-     */
     function validarNome(nome) {
         return nome.trim().length >= 3;
     }
 
-    /**
-     * Valida formato de email
-     * @param {string} email - Email a validar
-     * @returns {boolean} - True se válido
-     */
     function validarEmail(email) {
         const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return regex.test(email);
     }
 
-    /**
-     * Exibe mensagem temporária (toast)
-     */
     function showToast(message, type = 'success') {
         const existing = document.querySelector('.toast');
         if (existing) existing.remove();
@@ -44,11 +26,6 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => el.remove(), 3500);
     }
 
-    /**
-     * Valida força da senha
-     * @param {string} senha - Senha a validar
-     * @returns {string} - 'weak', 'medium', 'strong'
-     */
     function avaliarForcaSenha(senha) {
         if (senha.length < 6) return 'weak';
         
@@ -63,21 +40,10 @@ document.addEventListener('DOMContentLoaded', () => {
         return 'strong';
     }
 
-    /**
-     * Valida se as senhas são iguais
-     * @param {string} senha - Primeira senha
-     * @param {string} confirmaSenha - Confirmação de senha
-     * @returns {boolean} - True se iguais
-     */
     function validarConfirmacaoSenha(senha, confirmaSenha) {
         return senha === confirmaSenha && senha.length > 0;
     }
 
-    /**
-     * Exibe mensagem de erro no input
-     * @param {HTMLElement} element - Elemento do input
-     * @param {string} mensagem - Mensagem de erro
-     */
     function mostrarErro(element, mensagem) {
         element.classList.add('input-erro');
         
@@ -90,10 +56,6 @@ document.addEventListener('DOMContentLoaded', () => {
         errorMsg.textContent = mensagem;
     }
 
-    /**
-     * Remove mensagem de erro do input
-     * @param {HTMLElement} element - Elemento do input
-     */
     function limparErro(element) {
         element.classList.remove('input-erro');
         const errorMsg = element.parentElement.querySelector('.error-message');
@@ -102,9 +64,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    /**
-     * Atualiza o indicador de força de senha
-     */
     function atualizarIndicadorSenha() {
         const senha = inputSenha.value;
         
@@ -117,13 +76,9 @@ document.addEventListener('DOMContentLoaded', () => {
         passwordStrength.className = `password-strength ${forca}`;
     }
 
-    /**
-     * Manipula o envio do formulário
-     */
     formulario.addEventListener('submit', (e) => {
         e.preventDefault();
 
-        // Limpa erros anteriores
         limparErro(inputNome);
         limparErro(inputEmail);
         limparErro(inputSenha);
@@ -131,7 +86,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         let formularioValido = true;
 
-        // Valida nome
         if (!inputNome.value.trim()) {
             mostrarErro(inputNome, 'Por favor, insira seu nome');
             formularioValido = false;
@@ -140,7 +94,6 @@ document.addEventListener('DOMContentLoaded', () => {
             formularioValido = false;
         }
 
-        // Valida email
         if (!inputEmail.value.trim()) {
             mostrarErro(inputEmail, 'Por favor, insira seu email');
             formularioValido = false;
@@ -149,7 +102,6 @@ document.addEventListener('DOMContentLoaded', () => {
             formularioValido = false;
         }
 
-        // Valida senha
         if (!inputSenha.value) {
             mostrarErro(inputSenha, 'Por favor, insira uma senha');
             formularioValido = false;
@@ -158,7 +110,6 @@ document.addEventListener('DOMContentLoaded', () => {
             formularioValido = false;
         }
 
-        // Valida confirmação de senha
         if (!inputConfirmaSenha.value) {
             mostrarErro(inputConfirmaSenha, 'Por favor, confirme sua senha');
             formularioValido = false;
@@ -167,21 +118,16 @@ document.addEventListener('DOMContentLoaded', () => {
             formularioValido = false;
         }
 
-        // Valida termos
         if (!checkboxTermos.checked) {
             alert('Você deve aceitar os termos de uso e política de privacidade');
             formularioValido = false;
         }
 
-        // Se válido, envia
         if (formularioValido) {
             enviarFormulario();
         }
     });
 
-    /**
-     * Envia o formulário (simula envio)
-     */
     function enviarFormulario() {
         const dados = {
             nome: inputNome.value,
@@ -201,7 +147,6 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(async (res) => {
             const data = await res.json();
             if (!res.ok) throw new Error(data.message || 'Erro no cadastro');
-            // Sucesso: após criar, tentar logar automaticamente para obter token
             try {
                 const loginRes = await fetch('http://localhost:3000/api/login', {
                     method: 'POST',
@@ -214,7 +159,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (loginData.token) localStorage.setItem('auth_token', loginData.token);
                 formulario.reset();
                 atualizarIndicadorSenha();
-                window.location.href = './principal.html';
+                window.location.href = './dashboard.html';
             } catch (err) {
                 console.error('Auto-login após cadastro falhou:', err);
                 showToast('Conta criada, por favor faça login.', 'success');
@@ -233,14 +178,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    /**
-     * Monitora mudanças na senha para atualizar força
-     */
     inputSenha.addEventListener('input', atualizarIndicadorSenha);
 
-    /**
-     * Remove erro ao focar no input
-     */
     inputNome.addEventListener('focus', () => limparErro(inputNome));
     inputEmail.addEventListener('focus', () => limparErro(inputEmail));
     inputSenha.addEventListener('focus', () => limparErro(inputSenha));

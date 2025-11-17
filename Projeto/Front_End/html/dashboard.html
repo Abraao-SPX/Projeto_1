@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Dashboard - Cabeleireiro</title>
+  <link rel="stylesheet" href="../css/dashboard.css">
+</head>
+<body>
+  <header class="topbar">
+    <h1>Dashboard - Cabeleireiro</h1>
+    <div class="actions">
+      <button id="refreshBtn">Atualizar</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="cards">
+      <div class="card">
+        <div class="card-title">Clientes</div>
+        <div class="card-value" id="totalClients">—</div>
+      </div>
+      <div class="card">
+        <div class="card-title">Agendamentos Hoje</div>
+        <div class="card-value" id="appointmentsToday">—</div>
+      </div>
+      <div class="card">
+        <div class="card-title">Receita no Mês</div>
+        <div class="card-value" id="revenueMonth">—</div>
+      </div>
+    </section>
+
+    <section class="services">
+      <h2>Serviços (contagem)</h2>
+      <ul id="servicesList" class="service-list"></ul>
+    </section>
+
+    <section class="appointments">
+      <h2>Próximos Agendamentos</h2>
+      <div class="filters">
+        <input id="searchInput" placeholder="Pesquisar por cliente/serviço" />
+      </div>
+      <table id="appointmentsTable">
+        <thead>
+          <tr><th>Hora</th><th>Cliente</th><th>Serviço</th><th>Preço</th></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+  </main>
+
+  <script src="../js/dashboard.js" defer></script>
+</body>
+</html>

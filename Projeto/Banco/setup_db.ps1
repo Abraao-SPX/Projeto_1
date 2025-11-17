@@ -1,6 +1,3 @@
-# Executa schema.sql e seed.sql (PowerShell)
-# Uso: execute na pasta projeto (ou passe caminho correto)
-
 $schema = Join-Path $PSScriptRoot 'schema.sql'
 $seed = Join-Path $PSScriptRoot 'seed.sql'
 
